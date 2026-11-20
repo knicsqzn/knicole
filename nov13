@@ -1,2 +1,1219 @@
-asa bAhyn l;l po ca  nt type e3
+import sys
+import random
+import pygame
 
+import os
+import sys
+import random
+import string
+import tkinter as tk
+from tkinter import messagebox
+# Fix TclError in Python 3.13 virtual environments
+base_python = r"C:\Users\CL2-PC\AppData\Local\Programs\Python\Python313"
+os.environ["TCL_LIBRARY"] = os.path.join(base_python, "tcl", "tcl8.6")
+os.environ["TK_LIBRARY"] = os.path.join(base_python, "tcl", "tk8.6")
+
+# CREATE MAIN WINDOW
+
+root = tk.Tk()
+root.title("PYTHONIEE!")
+root.geometry("1000x650")
+root.configure(bg="#f1f3f5")
+root.resizable(False, False)
+
+letters = string.ascii_letters + "!"
+target = "Welcome to PYTHONIEE!"
+
+current = [""] * len(target)
+
+# COLORS
+dark = "#20232e"
+green = "#04AA6D"
+yellow = "#FFD43B"
+white = "#FFFFFF"
+
+
+# =========================
+# WELCOME ANIMATION
+# =========================
+
+welcome_frame = tk.Frame(root, bg=dark)
+welcome_frame.pack(fill="both", expand=True)
+
+welcome_label = tk.Label(
+    welcome_frame,
+    text="",
+    font=("Arial", 24, "bold"),
+    fg=yellow,
+    bg=dark
+)
+
+welcome_label.pack(expand=True)
+
+def close_welcome():
+    root.destroy()  # Closes the Tkinter window so Python moves on to the rest of the file
+
+
+def animate(index=0):
+    if index >= len(target):
+        welcome_label.config(text=target)
+        root.after(1000, close_welcome)  # Waits 1 second, then closes Tkinter
+        return
+
+    if target[index] == " ":
+        current[index] = " "
+        animate(index + 1)
+    else:
+        letter = random.choice(letters)
+        current[index] = letter
+        welcome_label.config(text="".join(current))
+
+        if letter == target[index]:
+            root.after(5, animate, index + 1)
+        else:
+            root.after(5, animate, index)
+
+
+animate(0)
+root.mainloop()
+
+print("                                   Welcome to Pythoniee! \nWhere you can learn and have fun at the same time")
+
+while (True):
+    print("Let's Start...")
+    print("============================================================================================================")
+    print("                                        PYTHONIEE!          ")
+    print("============================================================================================================\n")
+
+    print("  Python is a widely-used programming language that was created by Guido van Rossum in 1991\n")
+    print("  Python is a high-level, interpreted, and general-purpose programming language  \ndesigned to be simple, readable, and easy to learn\n")
+
+    print(" Available term:")
+    print("   1                       Prelim")
+    print("   2                       Midterm")
+    print("   3                       Fianal\n")
+    term = int(input("What do want to learn: "))
+
+    if term == 1:
+        print("\n Available lessons:")
+        print("   A                       Basic Syntax")
+        print("   B                       Printing")
+        print("   C                       Comments")
+        print("   D                       Variable")
+        print("   E                       Data Type")
+        print("   F                       Arithmetic Operation")
+        print("   G                       Onput\n")
+
+        lesson = (input("What do want to learn: ")).upper()
+
+        if lesson == "A":
+            print('=======================================================================================================')
+            print('                                     PYTHON SYNTAX')
+            print('=======================================================================================================\n')
+            print(' Syntax refers to the set of rules that tells us how to correctly write a program in Python.\n')
+            print("   1. Python is Case-Sensitive\n")
+            print('     Python treats uppercase and lowercase letters differently.')
+            print("  Correct way \n  ")
+            print("   1 name = 'John' \n")
+            print("   2 print(name) \n\n")
+            print("  Incorrect way \n ")
+            print("   1 name = 'John' \n ")
+            print("   2 print(Name)\n \n")
+
+            print("   2. Indentation \n")
+            print('     Unlike other programming languages, Python uses indentation (spaces) to define blocks of code.')
+            print("  Correct way \n")
+            print("    age = 18 \n")
+            print("    if age >= 18:\n")
+            print("      print('Adult')\n")
+            print("  Correct way \n")
+            print("    age = 18 \n")
+            print("    if age >= 18:\n")
+            print("    print('Adult')\n\n")
+
+            print(" Lets test ur knowledge:\n\n")
+            while True:
+                ques1 = input("   1. Is name and Name are the same? (Y/N").upper()
+                if ques1 == 'Y':
+                    messagebox.showinfo("Pythoniee Result","Wrong! Python treats uppercase and lowercase letters differently.")
+                    break
+
+                elif ques1 == 'N':
+                    messagebox.showerror("Pythoniee Result", "Correct! Python is case-sensitive.")
+                    break
+
+                else:
+                    print("   Invalid input! Please enter only Y or N.\n")
+
+            while True:
+                ques1 = input("   2. What is correct? (Y/N").upper()
+                print("  Y = Python use indentation in condition like if statement.")
+                print("  N = Python doesn't need indentation.")
+                if ques1 == 'N':
+                    messagebox.showinfo("Pythoniee Result","Wrong! Python treats uppercase and lowercase letters differently.")
+                    break
+
+                elif ques1 == 'Y':
+                    messagebox.showerror("Pythoniee Result", "Correct! Python is case-sensitive.")
+                    break
+
+                else:
+                    print("   Invalid input! Please enter only Y or N.\n")
+
+        elif lesson == "B":
+                print('=======================================================================================================')
+                print('                                     PYTHON PRINTING')
+                print('=======================================================================================================\n')
+                print(" The print() function displays information on the screen.\n")
+                print("   1. Printing Text\n")
+                print('     In printing text, you must use quotation marks.')
+                print("  Correct way \n  ")
+                print("   print('Hi') \n\n")
+                print("  Incorrect way \n ")
+                print("   print(Hi)\n \n")
+
+                print("   2. Printing Numbers \n")
+                print('     In printing number, you dont need quotation marks.')
+                print("  Correct way \n")
+                print("    age = 18 \n")
+                print("    if age >= 18:\n")
+                print("      print('Adult')\n")
+                print("  Correct way \n")
+                print("    age = 18 \n")
+                print("    if age >= 18:\n")
+                print("    print('Adult')\n\n")
+
+        print(" Lets test your knowledge:\n\n")
+        while True:
+            ques1 = input("   1. Do you need quotation marks when printing text like Hello? (Y/N): ").strip().upper()
+            if ques1 == 'Y':
+                messagebox.showinfo("Pythoniee Result", "Correct! Text (strings) must be enclosed in quotation marks.")
+                break
+            elif ques1 == 'N':
+                messagebox.showerror("Pythoniee Result",
+                                     "Wrong! Without quotation marks, Python thinks Hello is a variable name.")
+                break
+            else:
+                print("   Invalid input! Please enter only Y or N.\n")
+
+        while True:
+            ques2 = input("   2. Is print(Hi) the correct way to print the word Hi? (Y/N): ").strip().upper()
+            if ques2 == 'N':
+                messagebox.showinfo("Pythoniee Result",
+                                    "Correct! It should be written as print('Hi') or print(\"Hi\").")
+                break
+            elif ques2 == 'Y':
+                messagebox.showerror("Pythoniee Result",
+                                     "Wrong! print(Hi) will cause a NameError because Hi has no quotes.")
+                break
+            else:
+                print("   Invalid input! Please enter only Y or N.\n")
+
+            elif lesson == "C":
+            print(
+                '=======================================================================================================')
+            print('                                     PYTHON COMMENTS')
+            print(
+                '=======================================================================================================\n')
+            print(" Comments are ignored by Python. They are used to explain the code.\n")
+            print("   1. Single-Line Comment\n")
+            print("     Uses the hash symbol (#). Comment continues until the end of the line.")
+            print("     Used for: Short explanations, disabling a line of code, or quick notes.\n")
+            print("  Example \n")
+            print("   1 # This is a comment \n")
+            print("   2 \n")
+            print("   3 print('Hello') \n\n")
+
+            print("   2. Multi-Line Comment\n")
+            print('     Uses triple quotes ("""). Comment continues until the closing """.')
+            print("     Used for: Longer explanations, describing functions, or adding documentation.\n")
+            print("  Example \n")
+            print('   1 """ \n')
+            print("   2 This is \n")
+            print("   3 a multi-line \n")
+            print("   4 comment. \n")
+            print('   5 """ \n')
+            print("   6 \n")
+            print("   7 print('Hello') \n\n")
+
+            print(" Lets test your knowledge:\n\n")
+            while True:
+                ques1 = input(
+                    "   1. Does Python execute (run) lines that are marked as comments? (Y/N): ").strip().upper()
+                if ques1 == 'N':
+                    messagebox.showinfo("Pythoniee Result", "Correct! Comments are completely ignored by Python.")
+                    break
+                elif ques1 == 'Y':
+                    messagebox.showerror("Pythoniee Result",
+                                         "Wrong! Python ignores comments; they are only for humans reading the code.")
+                    break
+                else:
+                    print("   Invalid input! Please enter only Y or N.\n")
+
+            while True:
+                ques2 = input(
+                    "   2. Is the hash symbol (#) used to write a single-line comment in Python? (Y/N): ").strip().upper()
+                if ques2 == 'Y':
+                    messagebox.showinfo("Pythoniee Result", "Correct! # starts a single-line comment in Python.")
+                    break
+                elif ques2 == 'N':
+                    messagebox.showerror("Pythoniee Result",
+                                         "Wrong! Python uses # for single-line comments and \"\"\" for multi-line comments.")
+                    break
+                else:
+                    print("   Invalid input! Please enter only Y or N.\n")
+
+
+
+
+
+
+QUESTIONS = {
+    "Prelim": [
+        {"question": "Which of the following is a valid Python variable name?", "choices": ["A) 2my_var", "B) my_var", "C) my-var"], "correct": "B"},
+        {"question": "What data type is the value 3.14 in Python?", "choices": ["A) int", "B) float", "C) str"], "correct": "B"},
+        {"question": "How do you output text to the terminal screen in Python?", "choices": ["A) echo()", "B) system.out.print()", "C) print()"], "correct": "C"},
+        {"question": "Which data type is used to represent text characters or lines of text?", "choices": ["A) str", "B) int", "C) float"], "correct": "A"},
+        {"question": "What is the correct way to declare an integer variable x with a value of 5?", "choices": ["A) int x = 5", "B) x = 5", "C) x := 5"], "correct": "B"},
+        {"question": "Python variable names are case-sensitive. Is Age the same as age?", "choices": ["A) Yes", "B) No", "C) Only in loops"], "correct": "B"},
+        {"question": "Which symbol is used to write comments in Python?", "choices": ["A) //", "B) /*", "C) #"], "correct": "C"},
+        {"question": "What will type('100') return?", "choices": ["A) int", "B) str", "C) char"], "correct": "B"},
+        {"question": "How do you write a multi-line string in Python?", "choices": ["A) Triple quotes", "B) Semicolons", "C) Slashes"], "correct": "A"},
+        {"question": "Which function converts a number or string into an integer?", "choices": ["A) integer()", "B) value()", "C) int()"], "correct": "C"},
+        {"question": "What happens if you try to print an undefined variable?", "choices": ["A) Prints None", "B) NameError", "C) Prints 0"], "correct": "B"},
+        {"question": "What is the data type of the result of 5 / 2?", "choices": ["A) int", "B) float", "C) double"], "correct": "B"},
+        {"question": "Which of these is a Python keyword?", "choices": ["A) true", "B) string", "C) True"], "correct": "C"},
+        {"question": "How do you combine two strings together?", "choices": ["A) Using +", "B) Using *", "C) Using .concat()"], "correct": "A"},
+        {"question": "What is the output of print(type(True))?", "choices": ["A) bool", "B) str", "C) int"], "correct": "A"},
+        {"question": "Which function gets text input from the user?", "choices": ["A) scan()", "B) input()", "C) read()"], "correct": "B"},
+        {"question": "What will print('A' * 3) display?", "choices": ["A) AAA", "B) A3", "C) Syntax Error"], "correct": "A"},
+        {"question": "Which keyword represents an empty or null value?", "choices": ["A) Null", "B) void", "C) None"], "correct": "C"},
+        {"question": "What is the file extension for Python files?", "choices": ["A) .py", "B) .pt", "C) .pyt"], "correct": "A"},
+        {"question": "Which built-in function returns the total character count of a string?", "choices": ["A) count()", "B) length()", "C) len()"], "correct": "C"},
+        {"question": "What data type is x = [1, 2, 3]?", "choices": ["A) tuple", "B) list", "C) array"], "correct": "B"},
+        {"question": "Which character can be used to start a variable name?", "choices": ["A) Underscore (_)", "B) Dollar sign ($)", "C) Hyphen (-)"], "correct": "A"},
+        {"question": "What is the syntax for creating an empty string?", "choices": ["A) x = null", "B) x = ''", "C) x = clear()"], "correct": "B"},
+        {"question": "Which statement about Python indentation is true?", "choices": ["A) It does not matter", "B) It defines code blocks", "C) Semicolons are required"], "correct": "B"},
+        {"question": "What is the value of int(4.9)?", "choices": ["A) 4", "B) 5", "C) 4.0"], "correct": "A"},
+        {"question": "What will print('Hello', 'World') do?", "choices": ["A) HelloWorld", "B) Hello World", "C) Syntax Error"], "correct": "B"},
+        {"question": "Which data type handles Yes/No or On/Off states?", "choices": ["A) Bit", "B) float", "C) bool"], "correct": "C"},
+        {"question": "What will str(123) do?", "choices": ["A) Convert 123 into a string", "B) Multiply 123", "C) Throw an error"], "correct": "A"},
+        {"question": "Which value represents a boolean False value?", "choices": ["A) 'False'", "B) False", "C) false"], "correct": "B"},
+        {"question": "How do you print a quote inside double quotes?", "choices": ["A) Use a backslash", "B) Use a forward slash", "C) It is impossible"], "correct": "A"}
+    ],
+
+    "Midterm": [
+        {"question": "What is the result of 10 % 3?", "choices": ["A) 1", "B) 3", "C) 0"], "correct": "A"},
+        {"question": "What operator is used for floor division?", "choices": ["A) /", "B) //", "C) %"], "correct": "B"},
+        {"question": "What does True and False evaluate to?", "choices": ["A) True", "B) False", "C) None"], "correct": "B"},
+        {"question": "What does True or False evaluate to?", "choices": ["A) True", "B) False", "C) Error"], "correct": "A"},
+        {"question": "What is the value of 2 ** 3?", "choices": ["A) 6", "B) 8", "C) 9"], "correct": "B"},
+        {"question": "What does not True evaluate to?", "choices": ["A) False", "B) True", "C) None"], "correct": "A"},
+        {"question": "What is the output of 15 // 4?", "choices": ["A) 3.75", "B) 3", "C) 4"], "correct": "B"},
+        {"question": "What is the value of 5 + 3 * 2?", "choices": ["A) 16", "B) 11", "C) 13"], "correct": "B"},
+        {"question": "Which assignment operator is equivalent to x = x + 5?", "choices": ["A) x =+ 5", "B) x += 5", "C) x == 5"], "correct": "B"},
+        {"question": "What operator means not equal to?", "choices": ["A) !=", "B) <>", "C) =="], "correct": "A"},
+        {"question": "What is the result of 10 == 10.0?", "choices": ["A) True", "B) False", "C) TypeError"], "correct": "A"},
+        {"question": "What does False or (True and False) evaluate to?", "choices": ["A) True", "B) False", "C) None"], "correct": "B"},
+        {"question": "What is the result of 7 % 9?", "choices": ["A) 2", "B) 0", "C) 7"], "correct": "C"},
+        {"question": "Which operator checks if two items have identical object identity?", "choices": ["A) in", "B) ==", "C) is"], "correct": "C"},
+        {"question": "What is the result of not (5 > 2)?", "choices": ["A) True", "B) False", "C) 3"], "correct": "B"},
+        {"question": "What operator subtracts a value and updates a variable?", "choices": ["A) --", "B) -=", "C) =+"], "correct": "B"},
+        {"question": "What does the in operator evaluate?", "choices": ["A) Membership inside a collection", "B) Division", "C) Bitwise shifts"], "correct": "A"},
+        {"question": "What is the output of 5.0 * 2?", "choices": ["A) 10", "B) 10.0", "C) 25"], "correct": "B"},
+        {"question": "Which has the highest execution hierarchy?", "choices": ["A) Addition (+)", "B) Logical AND", "C) Parentheses ()"], "correct": "C"},
+        {"question": "What happens if you divide 10 by zero?", "choices": ["A) Infinity", "B) ZeroDivisionError", "C) 0"], "correct": "B"},
+        {"question": "What is the result of True and not False?", "choices": ["A) True", "B) False", "C) Error"], "correct": "A"},
+        {"question": "What is the output of 100 - 25 * 3?", "choices": ["A) 225", "B) 25", "C) 75"], "correct": "B"},
+        {"question": "Which operator returns only the remainder?", "choices": ["A) %", "B) /", "C) //"], "correct": "A"},
+        {"question": "What does (10 > 5) and (3 < 1) evaluate to?", "choices": ["A) True", "B) False", "C) None"], "correct": "B"},
+        {"question": "Which operator multiplies and updates a variable?", "choices": ["A) x == 2", "B) x = 2", "C) x = 2"], "correct": "B"},
+        {"question": "What is the result of bool(0)?", "choices": ["A) True", "B) False", "C) None"], "correct": "B"},
+        {"question": "What is the result of bool(1)?", "choices": ["A) True", "B) False", "C) Error"], "correct": "A"},
+        {"question": "What is the value of -5 + 5?", "choices": ["A) -10", "B) 0", "C) 5"], "correct": "B"},
+        {"question": "What does (True or False) and False evaluate to?", "choices": ["A) True", "B) False", "C) NameError"], "correct": "B"},
+        {"question": "Which operator checks if a value is less than or equal to another?", "choices": ["A) <= ", "B) =<", "C) <="], "correct": "C"}
+    ],
+
+    "Final": [
+        {"question": "Which loop is best when you know the exact number of iterations?", "choices": ["A) while loop", "B) for loop", "C) infinite loop"], "correct": "B"},
+        {"question": "What keyword stops and exits a loop immediately?", "choices": ["A) continue", "B) stop", "C) break"], "correct": "C"},
+        {"question": "A loop that never ends because its condition is always True is called an...", "choices": ["A) Infinite loop", "B) Indented loop", "C) Nested loop"], "correct": "A"},
+        {"question": "What keyword skips the current iteration and moves to the next one?", "choices": ["A) skip", "B) continue", "C) pass"], "correct": "B"},
+        {"question": "What integers are generated by range(1, 5)?", "choices": ["A) 1, 2, 3, 4, 5", "B) 1, 2, 3, 4", "C) 0, 1, 2, 3, 4"], "correct": "B"},
+        {"question": "How does a standard while loop work?", "choices": ["A) Runs until a condition becomes False", "B) Runs exactly 10 times", "C) Runs only with lists"], "correct": "A"},
+        {"question": "How many times will for i in range(3) iterate?", "choices": ["A) 2 times", "B) 3 times", "C) 4 times"], "correct": "B"},
+        {"question": "What is used to iterate over every item in a list?", "choices": ["A) while loop only", "B) for-in loop", "C) break statement"], "correct": "B"},
+        {"question": "What is the default step value of range(10)?", "choices": ["A) 1", "B) 0", "C) 2"], "correct": "A"},
+        {"question": "What values are generated by range(0, 6, 2)?", "choices": ["A) 0, 2, 4, 6", "B) 0, 2, 4", "C) 2, 4, 6"], "correct": "B"},
+        {"question": "Can you nest a for loop inside another for loop?", "choices": ["A) Yes", "B) No", "C) Only inside functions"], "correct": "A"},
+        {"question": "What happens with while False:?", "choices": ["A) Infinite loop", "B) Runs once", "C) Never executes its body"], "correct": "C"},
+        {"question": "Which Python statement does nothing and acts as a placeholder?", "choices": ["A) continue", "B) pass", "C) break"], "correct": "B"},
+        {"question": "What values are generated by range(5, 2, -1)?", "choices": ["A) 5, 4, 3", "B) 5, 4, 3, 2", "C) 2, 3, 4, 5"], "correct": "A"},
+        {"question": "Which loop is useful for continuous monitoring?", "choices": ["A) while loop", "B) static for loop", "C) nested range matrix"], "correct": "A"},
+        {"question": "How do you prevent a while loop from becoming infinite?", "choices": ["A) Modify the condition variable", "B) Delete indentation", "C) Always use pass"], "correct": "A"},
+        {"question": "What will for x in 'Hi': print(x) output?", "choices": ["A) H and i on separate lines", "B) Hi on one line", "C) Syntax error"], "correct": "A"},
+        {"question": "Which optional clause runs after a loop finishes normally without break?", "choices": ["A) else", "B) except", "C) finally"], "correct": "A"},
+        {"question": "How many times will while True loop without break?", "choices": ["A) 0", "B) 1", "C) Infinitely"], "correct": "C"},
+        {"question": "What values are generated by range(2)?", "choices": ["A) 0, 1", "B) 1, 2", "C) 0, 1, 2"], "correct": "A"},
+        {"question": "Which structure reads collection items without numeric indexes?", "choices": ["A) for-in loop", "B) Infinite while loop", "C) Arithmetic counters"], "correct": "A"}
+    ]
+}
+
+
+# ==========================================
+# 2. GAME SETTINGS
+# ==========================================
+
+WIDTH = 1000
+HEIGHT = 850
+
+LANE_X = [250, 450, 650]
+LANE_NAMES = ["LEFT - A", "MIDDLE - B", "RIGHT - C"]
+
+READING_TIME = 5
+OBSTACLE_SPEED = 40
+
+WHITE = (255, 255, 255)
+YELLOW = (255, 220, 80)
+GREEN = (100, 230, 130)
+RED = (255, 100, 100)
+DARK = (24, 35, 30)
+
+
+# ==========================================
+# 3. TEXT FUNCTIONS
+# ==========================================
+
+def draw_text(screen, text, font, color, x, y, center=False):
+
+    image = font.render(str(text), True, color)
+    rect = image.get_rect()
+
+    if center:
+        rect.center = (x, y)
+    else:
+        rect.topleft = (x, y)
+
+    screen.blit(image, rect)
+
+
+def wrap_text(text, font, max_width):
+
+    words = text.split()
+    lines = []
+    current = ""
+
+    for word in words:
+
+        test = current + " " + word if current else word
+
+        if font.size(test)[0] <= max_width:
+            current = test
+        else:
+            if current:
+                lines.append(current)
+
+            current = word
+
+    if current:
+        lines.append(current)
+
+    return lines
+
+
+# ==========================================
+# 4. BUTTON FUNCTION
+# ==========================================
+
+def draw_button(screen, text, x, y, width, height, mouse_pos):
+
+    button = pygame.Rect(x, y, width, height)
+
+    if button.collidepoint(mouse_pos):
+        color = (90, 125, 100)
+    else:
+        color = (55, 75, 65)
+
+    pygame.draw.rect(screen, color, button, border_radius=12)
+    pygame.draw.rect(screen, YELLOW, button, 2, border_radius=12)
+
+    font = pygame.font.SysFont("arial", 21, bold=True)
+
+    draw_text(
+        screen, text, font, WHITE,
+        button.centerx, button.centery, True
+    )
+
+    return button
+
+
+# ==========================================
+# 5. MESSAGE BOX
+# ==========================================
+
+def show_message_box(screen, title, message, color=YELLOW):
+
+    clock = pygame.time.Clock()
+
+    title_font = pygame.font.SysFont("arial", 32, bold=True)
+    message_font = pygame.font.SysFont("arial", 22)
+    button_font = pygame.font.SysFont("arial", 20, bold=True)
+
+    while True:
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key in [pygame.K_RETURN, pygame.K_SPACE]:
+                    return
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+
+                if event.button == 1:
+                    return
+
+        overlay = pygame.Surface((WIDTH, HEIGHT))
+        overlay.set_alpha(190)
+        overlay.fill((0, 0, 0))
+        screen.blit(overlay, (0, 0))
+
+        box = pygame.Rect(150, 285, 700, 260)
+
+        pygame.draw.rect(
+            screen, (35, 45, 55), box, border_radius=18
+        )
+
+        pygame.draw.rect(
+            screen, color, box, 4, border_radius=18
+        )
+
+        draw_text(
+            screen, title, title_font, color,
+            WIDTH // 2, 345, True
+        )
+
+        lines = wrap_text(message, message_font, 620)
+
+        for i, line in enumerate(lines[:3]):
+
+            draw_text(
+                screen, line, message_font, WHITE,
+                WIDTH // 2, 410 + i * 30, True
+            )
+
+        button = pygame.Rect(350, 475, 300, 45)
+
+        pygame.draw.rect(
+            screen, (65, 100, 75), button, border_radius=10
+        )
+
+        draw_text(
+            screen, "CONTINUE", button_font, WHITE,
+            button.centerx, button.centery, True
+        )
+
+        pygame.display.flip()
+        clock.tick(60)
+
+
+# ==========================================
+# 6. MAIN MENU
+# ==========================================
+
+def welcome_menu(screen):
+
+    title_font = pygame.font.SysFont("arial", 38, bold=True)
+    subtitle_font = pygame.font.SysFont("arial", 22)
+
+    clock = pygame.time.Clock()
+
+    while True:
+
+        mouse_pos = pygame.mouse.get_pos()
+
+        screen.fill(DARK)
+
+        draw_text(
+            screen, "TEMPLE RUN", title_font, YELLOW,
+            WIDTH // 2, 170, True
+        )
+
+        draw_text(
+            screen, "PYTHON PROGRAMMING ACADEMIC RUN",
+            subtitle_font, WHITE, WIDTH // 2, 225, True
+        )
+
+        draw_text(
+            screen, "SELECT YOUR LEVEL TRACK",
+            subtitle_font, GREEN, WIDTH // 2, 310, True
+        )
+
+        options = [
+            ("1. PRELIM - Variables and Data Types", "Prelim"),
+            ("2. MIDTERM - Operators and Logic", "Midterm"),
+            ("3. FINAL - Loops and Iterations", "Final"),
+            ("4. EXIT GAME", "Exit")
+        ]
+
+        buttons = []
+
+        for i, option in enumerate(options):
+
+            button = draw_button(
+                screen, option[0],
+                200, 370 + i * 75,
+                600, 55, mouse_pos
+            )
+
+            buttons.append((button, option[1]))
+
+        draw_text(
+            screen, "Press 1, 2, 3, or 4 to select",
+            subtitle_font, YELLOW, WIDTH // 2, 710, True
+        )
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_1:
+                    return "Prelim"
+
+                elif event.key == pygame.K_2:
+                    return "Midterm"
+
+                elif event.key == pygame.K_3:
+                    return "Final"
+
+                elif event.key == pygame.K_4:
+                    pygame.quit()
+                    sys.exit()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+
+                if event.button == 1:
+
+                    for button, choice in buttons:
+
+                        if button.collidepoint(event.pos):
+
+                            if choice == "Exit":
+                                pygame.quit()
+                                sys.exit()
+
+                            return choice
+
+        pygame.display.flip()
+        clock.tick(60)
+
+
+# ==========================================
+# 7. DRAW GAME
+# ==========================================
+
+def draw_game(screen, question, hearts, score,
+              question_number, total, player_lane,
+              obstacle_y, fonts, reading=False, remaining=0):
+
+    title_font, question_font, choice_font, small_font = fonts
+
+    screen.fill(DARK)
+
+    # Road
+    pygame.draw.rect(
+        screen, (65, 65, 65), (120, 0, 660, HEIGHT)
+    )
+
+    # Road lanes
+    pygame.draw.line(
+        screen, WHITE, (340, 0), (340, HEIGHT), 4
+    )
+
+    pygame.draw.line(
+        screen, WHITE, (560, 0), (560, HEIGHT), 4
+    )
+
+    # Road marks
+    for y in range(20, HEIGHT, 100):
+
+        pygame.draw.line(
+            screen, (130, 130, 130),
+            (450, y), (450, y + 45), 3
+        )
+
+    # Top panel
+    pygame.draw.rect(
+        screen, (15, 20, 20), (0, 0, WIDTH, 165)
+    )
+
+    draw_text(
+        screen, "TEMPLE RUN: PYTHON ACADEMIC RUN",
+        title_font, YELLOW, WIDTH // 2, 25, True
+    )
+
+    draw_text(
+        screen, f"QUESTION {question_number}/{total}",
+        small_font, WHITE, 25, 58
+    )
+
+    draw_text(
+        screen, f"HEARTS: {'♥ ' * hearts}",
+        small_font, RED, 25, 88
+    )
+
+    draw_text(
+        screen, f"SCORE: {score}",
+        small_font, GREEN, 760, 58
+    )
+
+    # Question
+    question_lines = wrap_text(
+        question["question"], question_font, 830
+    )
+
+    for i, line in enumerate(question_lines[:2]):
+
+        draw_text(
+            screen, line, question_font, WHITE,
+            WIDTH // 2, 112 + i * 25, True
+        )
+
+    # Lane labels
+    for i in range(3):
+
+        draw_text(
+            screen, LANE_NAMES[i], small_font, YELLOW,
+            LANE_X[i], 185, True
+        )
+
+    # Answer obstacles
+    for i, choice in enumerate(question["choices"]):
+
+        card = pygame.Rect(
+            LANE_X[i] - 95, int(obstacle_y), 190, 75
+        )
+
+        pygame.draw.rect(
+            screen, (155, 75, 40), card, border_radius=12
+        )
+
+        pygame.draw.rect(
+            screen, (255, 220, 150), card, 3, border_radius=12
+        )
+
+        lines = wrap_text(choice, choice_font, 170)
+
+        for j, line in enumerate(lines[:2]):
+
+            draw_text(
+                screen, line, choice_font, WHITE,
+                card.centerx, card.y + 25 + j * 22, True
+            )
+
+    # Player
+    player_x = LANE_X[player_lane]
+
+    pygame.draw.circle(
+        screen, (255, 210, 160), (player_x, 505), 18
+    )
+
+    pygame.draw.rect(
+        screen, (40, 150, 230),
+        (player_x - 17, 525, 34, 48),
+        border_radius=8
+    )
+
+    pygame.draw.line(
+        screen, (255, 210, 160),
+        (player_x - 10, 540), (player_x - 25, 560), 6
+    )
+
+    pygame.draw.line(
+        screen, (255, 210, 160),
+        (player_x + 10, 540), (player_x + 25, 560), 6
+    )
+
+    if reading:
+
+        draw_text(
+            screen, "READ THE QUESTION!",
+            title_font, YELLOW, WIDTH // 2, 690, True
+        )
+
+        draw_text(
+            screen, f"STARTING IN: {remaining}",
+            small_font, WHITE, WIDTH // 2, 735, True
+        )
+
+    else:
+
+        draw_text(
+            screen, "MOVE: LEFT / RIGHT ARROW KEYS",
+            small_font, WHITE, WIDTH // 2, 690, True
+        )
+
+        draw_text(
+            screen, "ESC = RETURN TO MENU",
+            small_font, YELLOW, WIDTH // 2, 730, True
+        )
+
+    pygame.display.flip()
+
+
+# ==========================================
+# 8. PLAY LEVEL
+# ==========================================
+
+def play_level(level_name, screen):
+
+    clock = pygame.time.Clock()
+
+    title_font = pygame.font.SysFont("arial", 25, bold=True)
+    question_font = pygame.font.SysFont("arial", 19, bold=True)
+    choice_font = pygame.font.SysFont("arial", 16, bold=True)
+    small_font = pygame.font.SysFont("arial", 18, bold=True)
+
+    fonts = (
+        title_font,
+        question_font,
+        choice_font,
+        small_font
+    )
+
+    q_list = QUESTIONS[level_name].copy()
+    random.shuffle(q_list)
+
+    hearts = 3
+    score = 0
+
+    total_q = len(q_list)
+
+    for i, q in enumerate(q_list, start=1):
+
+        if hearts <= 0:
+            break
+
+        player_lane = 1
+        obstacle_y = 230
+        answered = False
+
+        # QUESTION READING TIME
+
+        read_time = READING_TIME
+
+        while read_time > 0:
+
+            for event in pygame.event.get():
+
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN:
+
+                    if event.key == pygame.K_ESCAPE:
+                        return False, score
+
+            draw_game(
+                screen, q, hearts, score,
+                i, total_q, player_lane,
+                obstacle_y, fonts,
+                True, int(read_time) + 1
+            )
+
+            clock.tick(60)
+
+            read_time -= 1 / 60
+
+        # ANSWERING TIME
+
+        while not answered:
+
+            delta_time = clock.tick(60) / 1000
+
+            for event in pygame.event.get():
+
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if event.type == pygame.KEYDOWN:
+
+                    if event.key == pygame.K_LEFT:
+                        player_lane = max(0, player_lane - 1)
+
+                    elif event.key == pygame.K_RIGHT:
+                        player_lane = min(2, player_lane + 1)
+
+                    elif event.key == pygame.K_ESCAPE:
+                        return False, score
+
+            obstacle_y += OBSTACLE_SPEED * delta_time
+
+            draw_game(
+                screen, q, hearts, score,
+                i, total_q, player_lane,
+                obstacle_y, fonts
+            )
+
+            # CHECK ANSWER
+
+            if obstacle_y >= 465:
+
+                chosen_answer = ["A", "B", "C"][player_lane]
+
+                if chosen_answer == q["correct"]:
+
+                    score += 1
+
+                    show_message_box(
+                        screen,
+                        "CORRECT ANSWER!",
+                        f"Great job! Your score is now {score}!",
+                        GREEN
+                    )
+
+                else:
+
+                    hearts -= 1
+
+                    show_message_box(
+                        screen,
+                        "WRONG ANSWER!",
+                        f"Correct answer: {q['correct']} | Hearts left: {hearts}",
+                        RED
+                    )
+
+                answered = True
+
+        if hearts <= 0:
+            break
+
+    if hearts <= 0:
+        return False, score
+
+    return True, score
+
+
+# ==========================================
+# 9. GAME OVER / STAGE COMPLETE SCREEN
+# ==========================================
+
+def end_menu(screen, level, score, total, success):
+
+    clock = pygame.time.Clock()
+
+    title_font = pygame.font.SysFont("arial", 43, bold=True)
+    number_font = pygame.font.SysFont("arial", 65, bold=True)
+    label_font = pygame.font.SysFont("arial", 19, bold=True)
+    message_font = pygame.font.SysFont("arial", 23, bold=True)
+    button_font = pygame.font.SysFont("arial", 23, bold=True)
+
+    # Buttons
+    home_button = pygame.Rect(200, 570, 175, 100)
+    menu_button = pygame.Rect(410, 570, 175, 100)
+    retry_button = pygame.Rect(620, 570, 190, 100)
+
+    while True:
+
+        mouse_pos = pygame.mouse.get_pos()
+
+        # Background
+        screen.fill((25, 30, 25))
+
+        # Dark overlay
+        overlay = pygame.Surface((WIDTH, HEIGHT))
+        overlay.set_alpha(170)
+        overlay.fill((0, 0, 0))
+        screen.blit(overlay, (0, 0))
+
+        # Background decorations
+        pygame.draw.circle(
+            screen, (45, 65, 45), (100, 150), 100
+        )
+
+        pygame.draw.circle(
+            screen, (45, 65, 45), (900, 200), 130
+        )
+
+        # Panel shadow
+        shadow = pygame.Rect(187, 195, 640, 430)
+
+        pygame.draw.rect(
+            screen, (15, 15, 15),
+            shadow, border_radius=40
+        )
+
+        # Cream panel
+        panel = pygame.Rect(180, 175, 640, 430)
+
+        pygame.draw.rect(
+            screen, (245, 235, 190),
+            panel, border_radius=45
+        )
+
+        pygame.draw.rect(
+            screen, (180, 155, 100),
+            panel, 4, border_radius=45
+        )
+
+        # Title
+        if success:
+            title = "STAGE COMPLETE!"
+            title_color = (55, 110, 65)
+        else:
+            title = "GAME OVER!"
+            title_color = (125, 65, 35)
+
+        draw_text(
+            screen, title, title_font, title_color,
+            WIDTH // 2, 230, True
+        )
+
+        # Big score
+        draw_text(
+            screen, "YOUR SCORE:",
+            label_font, (85, 60, 35),
+            350, 290, True
+        )
+
+        draw_text(
+            screen, str(score),
+            number_font, (210, 85, 35),
+            650, 305, True
+        )
+
+        # Score boxes
+        boxes = [
+            pygame.Rect(225, 385, 165, 110),
+            pygame.Rect(415, 385, 165, 110),
+            pygame.Rect(605, 385, 165, 110)
+        ]
+
+        labels = [
+            "QUESTIONS",
+            "CORRECT",
+            "TOTAL"
+        ]
+
+        values = [
+            str(total),
+            str(score),
+            str(score) + "/" + str(total)
+        ]
+
+        for i in range(3):
+
+            pygame.draw.rect(
+                screen, (250, 242, 210),
+                boxes[i], border_radius=20
+            )
+
+            pygame.draw.rect(
+                screen, (170, 145, 95),
+                boxes[i], 2, border_radius=20
+            )
+
+            draw_text(
+                screen, labels[i],
+                label_font, (90, 65, 35),
+                boxes[i].centerx,
+                boxes[i].y + 27, True
+            )
+
+            draw_text(
+                screen, values[i],
+                number_font, (205, 105, 20),
+                boxes[i].centerx,
+                boxes[i].y + 72, True
+            )
+
+        # Message
+        if success:
+            message = "THAT WAS AWESOME! GREAT JOB!"
+        else:
+            message = "THAT WAS AWESOME-ISH... TRY AGAIN!"
+
+        draw_text(
+            screen, message, message_font,
+            (90, 55, 30), WIDTH // 2, 535, True
+        )
+
+        # HOME BUTTON
+        pygame.draw.rect(
+            screen, (125, 45, 15),
+            home_button, border_radius=18
+        )
+
+        pygame.draw.rect(
+            screen, (240, 115, 30),
+            home_button, border_radius=18
+        )
+
+        draw_text(
+            screen, "⌂", title_font, WHITE,
+            home_button.centerx, home_button.centery - 10, True
+        )
+
+        draw_text(
+            screen, "HOME", button_font, WHITE,
+            home_button.centerx, home_button.bottom - 20, True
+        )
+
+        # MENU BUTTON
+        pygame.draw.rect(
+            screen, (125, 45, 15),
+            menu_button, border_radius=18
+        )
+
+        pygame.draw.rect(
+            screen, (240, 115, 30),
+            menu_button, border_radius=18
+        )
+
+        draw_text(
+            screen, "MENU", button_font, WHITE,
+            menu_button.centerx, menu_button.centery, True
+        )
+
+        # PLAY AGAIN BUTTON
+        pygame.draw.rect(
+            screen, (30, 85, 60),
+            retry_button, border_radius=18
+        )
+
+        pygame.draw.rect(
+            screen, (105, 175, 125),
+            retry_button, 4, border_radius=18
+        )
+
+        draw_text(
+            screen, "▶", title_font, WHITE,
+            retry_button.centerx,
+            retry_button.centery - 8, True
+        )
+
+        draw_text(
+            screen, "PLAY AGAIN", button_font, WHITE,
+            retry_button.centerx,
+            retry_button.bottom - 20, True
+        )
+
+        # Hover effects
+        for button in [home_button, menu_button, retry_button]:
+
+            if button.collidepoint(mouse_pos):
+
+                pygame.draw.rect(
+                    screen, YELLOW,
+                    button, 4, border_radius=18
+                )
+
+        # EVENTS
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+            if event.type == pygame.KEYDOWN:
+
+                if event.key == pygame.K_ESCAPE:
+                    return "menu"
+
+                if event.key == pygame.K_1:
+                    return "menu"
+
+                if event.key == pygame.K_2:
+                    return "retry"
+
+                if event.key == pygame.K_3:
+                    pygame.quit()
+                    sys.exit()
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+
+                if event.button == 1:
+
+                    if home_button.collidepoint(event.pos):
+                        return "menu"
+
+                    elif menu_button.collidepoint(event.pos):
+                        return "menu"
+
+                    elif retry_button.collidepoint(event.pos):
+                        return "retry"
+
+        pygame.display.flip()
+        clock.tick(60)
+
+
+# ==========================================
+# 10. MAIN GAME
+# ==========================================
+
+def main():
+
+    pygame.init()
+
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+
+    pygame.display.set_caption(
+        "Temple Run: Python Programming Academic Run"
+    )
+
+    while True:
+
+        selected_level = welcome_menu(screen)
+
+        while True:
+
+            success, final_score = play_level(
+                selected_level, screen
+            )
+
+            total_questions = len(QUESTIONS[selected_level])
+
+            if success:
+
+                result = end_menu(
+                    screen,
+                    selected_level,
+                    final_score,
+                    total_questions,
+                    True
+                )
+
+            else:
+
+                result = end_menu(
+                    screen,
+                    selected_level,
+                    final_score,
+                    total_questions,
+                    False
+                )
+
+            if result == "retry":
+                continue
+
+            elif result == "menu":
+                break
+
+
+# ==========================================
+# 11. START GAME
+# ==========================================
+
+if __name__ == "__main__":
+    main()
